@@ -16,7 +16,6 @@ const onRedirectCallback = (appState) => {
 // Please see https://auth0.github.io/auth0-react/interfaces/Auth0ProviderOptions.html
 // for a full list of the available properties on the provider
 const config = getConfig();
-const identifier = process.env.REACT_APP_AUTH0_IDENTIFIER
 
 const providerConfig = {
   domain: config.domain,
@@ -24,7 +23,7 @@ const providerConfig = {
   onRedirectCallback,
   authorizationParams: {
     redirect_uri: window.location.origin,
-    ...(config.audience ? { audience: identifier } : null),
+    ...(config.audience ? { audience: config.audience } : null),
   },
 };
 
